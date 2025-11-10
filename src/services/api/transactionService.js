@@ -393,9 +393,6 @@ export const transactionService = {
         category,
         amount
       }));
-    } catch (error) {
-      console.error("Error getting category breakdown:", error?.response?.data?.message || error);
-      return [];
 } catch (error) {
       console.error("Error getting category breakdown:", error?.response?.data?.message || error);
       return [];
