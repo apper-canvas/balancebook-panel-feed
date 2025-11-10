@@ -32,7 +32,7 @@ const TransactionForm = ({
   useEffect(() => {
     if (transaction) {
       setFormData({
-        amount: transaction.amount.toString(),
+amount: transaction.amount.toString(),
         category: transaction.category,
         type: transaction.type,
         date: formatShortDate(new Date(transaction.date)),
@@ -86,16 +86,16 @@ const TransactionForm = ({
 
     setIsSubmitting(true);
     try {
-      const transactionData = {
+const transactionData = {
         ...formData,
         amount: parseFloat(formData.amount),
         date: new Date(formData.date).toISOString()
       };
 
-      if (transaction) {
+if (transaction) {
         await transactionService.update(transaction.Id, transactionData);
         toast.success("Transaction updated successfully!");
-      } else {
+} else {
         await transactionService.create(transactionData);
         toast.success("Transaction added successfully!");
       }

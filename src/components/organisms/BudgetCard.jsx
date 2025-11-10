@@ -12,10 +12,10 @@ import { cn } from "@/utils/cn";
 
 const BudgetCard = ({ budget, categoryInfo, onUpdate }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [editAmount, setEditAmount] = useState(budget.monthlyLimit.toString());
+const [editAmount, setEditAmount] = useState(budget.monthlyLimit.toString());
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const percentage = budget.monthlyLimit > 0 ? (budget.spent / budget.monthlyLimit) * 100 : 0;
+const percentage = budget.monthlyLimit > 0 ? (budget.spent / budget.monthlyLimit) * 100 : 0;
   const remaining = budget.monthlyLimit - budget.spent;
 
   const getStatusColor = () => {
@@ -33,8 +33,7 @@ const BudgetCard = ({ budget, categoryInfo, onUpdate }) => {
 
     setIsSubmitting(true);
     try {
-      await budgetService.update(budget.Id, { 
-        ...budget,
+await budgetService.update(budget.Id, { 
         monthlyLimit: newAmount 
       });
       toast.success("Budget updated successfully!");

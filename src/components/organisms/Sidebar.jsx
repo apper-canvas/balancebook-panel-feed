@@ -1,4 +1,7 @@
 import { NavLink } from "react-router-dom";
+import { useAuth } from "@/layouts/Root";
+import { useSelector } from "react-redux";
+import Button from "@/components/atoms/Button";
 import ApperIcon from "@/components/ApperIcon";
 import { cn } from "@/utils/cn";
 
@@ -78,7 +81,7 @@ const Sidebar = ({ className }) => {
           ))}
         </nav>
 
-        {/* Footer */}
+{/* Footer */}
         <div className="p-4 border-t border-gray-200">
           <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-4">
             <div className="flex items-center space-x-3">
@@ -89,6 +92,9 @@ const Sidebar = ({ className }) => {
               </div>
             </div>
           </div>
+          
+          {/* Logout Button */}
+          <LogoutButton />
         </div>
       </div>
     </div>
@@ -96,3 +102,24 @@ const Sidebar = ({ className }) => {
 };
 
 export default Sidebar;
+// Logout Button Component
+const LogoutButton = () => {
+  const { logout } = useAuth();
+  const { user } = useSelector(state => state.user);
+
+  if (!user) return null;
+
+  return (
+    <div className="mt-4">
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={logout}
+        className="w-full justify-start"
+      >
+        <ApperIcon name="LogOut" className="w-4 h-4 mr-2" />
+        Logout
+      </Button>
+    </div>
+  );
+};

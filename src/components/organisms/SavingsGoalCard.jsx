@@ -16,7 +16,7 @@ const SavingsGoalCard = ({ goal, onUpdate }) => {
   const [contributionAmount, setContributionAmount] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const percentage = goal.targetAmount > 0 ? (goal.currentAmount / goal.targetAmount) * 100 : 0;
+const percentage = goal.targetAmount > 0 ? (goal.currentAmount / goal.targetAmount) * 100 : 0;
   const remaining = goal.targetAmount - goal.currentAmount;
   const isCompleted = goal.currentAmount >= goal.targetAmount;
 
